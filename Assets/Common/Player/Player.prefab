@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSpeed: 5
-  speed: 7
+  speed: 5
   rotationSpeed: 720
-  jumpButtonGracePeriod: 0.2
-  gravityAmount: -20
+  jumpButtonGracePeriod: 0.1
+  gravityAmount: -15
   cameraTransform: {fileID: 0}
 --- !u!1 &1700854049955308762
 GameObject:
