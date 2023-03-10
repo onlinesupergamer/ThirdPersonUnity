@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -93,8 +94,10 @@ public class PlayerMovement : MonoBehaviour
         ////////////////////////////////////////////////////////////////////////////////
 
         Vector3 Velocity = movementDirection * magnitude;
-        Velocity.y = ySpeed; // Adds gravity to movement calculation
+        Velocity = AdjustedVelocityToSlope(Velocity);
+        Velocity.y += ySpeed; // Adds gravity to movement calculation
 
+        
         characterController.Move(Velocity * Time.deltaTime); // Actually moves the player
 
         if (movementDirection != Vector3.zero) // This part just calculates player rotation
@@ -103,6 +106,30 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime); // This does the actual rotation
         }
+
+
+        
+
+    }
+
+    private Vector3 AdjustedVelocityToSlope(Vector3 Velocity)
+    {
+        Vector3 rayStart = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+        var ray = new Ray(rayStart, Vector3.down);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 0.2f))
+        {
+            var slopeRotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            var adjustedVelocity = slopeRotation * Velocity;
+
+            if (adjustedVelocity.y < 0)
+            {
+                return adjustedVelocity;
+            }
+        }
+
+        return Velocity;
+
     }
 
     private void OnApplicationFocus(bool focus)
