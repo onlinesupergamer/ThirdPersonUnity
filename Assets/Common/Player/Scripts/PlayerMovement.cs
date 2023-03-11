@@ -34,6 +34,14 @@ public class PlayerMovement : MonoBehaviour
     float? lastGroundedTime;
     float? jumpButtonPressedTime;
 
+
+    private void Awake()
+    {
+        CurrentPlayerData.GetPlayerData();
+
+        print(CurrentPlayerData.health);
+    }
+
     private void Start()
     {
 
