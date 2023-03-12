@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1700854049897620375}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,11 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63eda508dcbb9e94d9b739e2e170254c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 5
+  jumpSpeed: 7
   speed: 5
   rotationSpeed: 720
   jumpButtonGracePeriod: 0.1
-  gravityAmount: -15
+  gravityAmount: -20
   cameraTransform: {fileID: 0}
 --- !u!1 &1700854049955308762
 GameObject:

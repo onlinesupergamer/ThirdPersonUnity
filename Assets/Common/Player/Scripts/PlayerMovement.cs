@@ -140,6 +140,8 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
+
     private void OnApplicationFocus(bool focus)
     {
         // Quality of life thing, locks the mouse when the application is in focus
